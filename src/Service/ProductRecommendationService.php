@@ -5,9 +5,23 @@ namespace App\Service;
 use App\Interface\ProductRecommendationInterface;
 
 class ProductRecommendationService implements ProductRecommendationInterface 
+
 {
-    public function getRecommendations(array $weatherForecast) : array
+    private MeteoApiService $meteoApiService;
+
+    public function __construct(MeteoApiService $meteoApiService)
     {
-        return ['test'];
+        $this->meteoApiService = $meteoApiService;
+    }
+
+    public function getRecommendations(string $city): array
+    {
+        try {
+            $response = $this->meteoApiService->getWeatherForecast($city);
+            
+            return $response;
+        } catch (\Exception $e) {
+            throw new \RuntimeException('Failed to fetch weather data: ' . $e->getMessage());
+        }
     }
 }
