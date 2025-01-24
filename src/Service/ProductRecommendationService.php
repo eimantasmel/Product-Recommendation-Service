@@ -14,14 +14,17 @@ class ProductRecommendationService implements ProductRecommendationInterface
         $this->meteoApiService = $meteoApiService;
     }
 
-    public function getRecommendations(string $city): array
+    public function getRecommendations(string $city, int $datesLimit = 3, int $productsLimit = 2): array
     {
         try {
-            $response = $this->meteoApiService->getWeatherForecast($city);
+            $forecasts = $this->meteoApiService->getWeatherForecast($city);
+            $forecasts = array_slice($forecasts, 0, $datesLimit);
             
-            return $response;
+
+            return $forecasts;
         } catch (\Exception $e) {
             throw new \RuntimeException('Failed to fetch weather data: ' . $e->getMessage());
         }
     }
+
 }

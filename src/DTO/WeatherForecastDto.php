@@ -4,7 +4,7 @@ namespace App\DTO;
 
 use DateTime;
 
-class WeatherForecastDto
+class WeatherForecastDto implements \JsonSerializable
 {
     private string $weatherForecast;
     private DateTime $date;
@@ -29,5 +29,13 @@ class WeatherForecastDto
     public function getDataSource(): string
     {
         return $this->dataSource;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'weather' => $this->weatherForecast,
+            'date' => $this->date->format('Y-m-d'),
+        ];
     }
 }
