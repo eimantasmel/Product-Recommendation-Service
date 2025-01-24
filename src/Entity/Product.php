@@ -28,6 +28,9 @@ class Product
     #[ORM\Column(name: 'price', type: 'decimal', precision: 7, scale: 2)]
     private float $price;
 
+    #[ORM\Column(type: 'json')]
+    private array $weatherConditions = []; // Conditions like ['cloudy', 'sunny']
+
     public function getSku(): string
     {
         return $this->sku;
@@ -58,6 +61,17 @@ class Product
     public function setPrice(float $price): self
     {
         $this->price = $price;
+        return $this;
+    }
+
+    public function getWeatherConditions(): array
+    {
+        return $this->weatherConditions;
+    }
+
+    public function setWeatherConditions(array $conditions): self
+    {
+        $this->weatherConditions = $conditions;
         return $this;
     }
 }
