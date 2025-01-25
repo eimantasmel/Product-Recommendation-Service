@@ -6,9 +6,9 @@ use DateTime;
 
 class WeatherForecastDto implements \JsonSerializable
 {
-    private string $weatherForecast;
-    private DateTime $date;
-    private string $dataSource;
+    protected string $weatherForecast;
+    protected DateTime $date;
+    protected string $dataSource;
 
     public function __construct(string $weatherForecast, string $date, string $dataSource) {
         $this->weatherForecast = $weatherForecast;
