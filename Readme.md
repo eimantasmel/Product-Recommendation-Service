@@ -10,20 +10,56 @@ This service provides product recommendations based on the weather forecast for 
 - **Faker**: Library to generate sample product data
 - **Cache**: Used to cache API responses for 5 minutes
 
-## Prerequisites
+
+## Setup Instructions With Docker
+Follow these steps to set up and run the application via docker:
+
+1. Clone the repository: 
+   ```bash 
+   git clone git@github.com:eimantasmel/backend_task.git
+   cd your-repository-name
+   ```
+2. Launch docker containers: Run the following command to launch docker containers:
+   ```bash 
+   docker compose up --build -d
+   ```
+3. Select backen app container:
+   ```bash 
+   docker exec -it backend_app sh
+   ```
+4. Install dependencies: Run the following command to install the required PHP dependencies:
+   ```bash 
+   composer install
+   ```
+5. Configure .env:
+    - Update the .env file with your database credentials. Set the DATABASE_URL to match your MySQL connection settings:
+
+6. Run the database migrations: Run the migrations to set up the database schema:
+   ```bash 
+   php bin/console doctrine:database:create
+   php bin/console doctrine:migrations:migrate
+   ```
+7. Load Fixtures (Optional)
+   ```bash 
+   php bin/console doctrine:fixtures:load
+   ```
+8. Access the API: 
+
+   ![Presentation image](https://s3.amazonaws.com/i.snag.gy/qKT9zX.jpg)
+
+## Setup Instructions Without Docker
+
+### Prerequisites
 - PHP 7.x or 8.x
 - Composer
 - MySQL (or equivalent database)
 - Symfony CLI
-- A valid LHMT API key for weather data retrieval
-
-## Setup Instructions
 
 Follow these steps to set up and run the application locally:
 
 1. Clone the repository: 
    ```bash 
-   git clone https://github.com/your-repository-name.git 
+   git clone git@github.com:eimantasmel/backend_task.git
    cd your-repository-name
    ```
 2. Install dependencies: Run the following command to install the required PHP dependencies:
@@ -39,9 +75,10 @@ Follow these steps to set up and run the application locally:
    ```
 4. Run the database migrations: Run the migrations to set up the database schema:
    ```bash 
+   php bin/console doctrine:database:create
    php bin/console doctrine:migrations:migrate
    ```
-5. Run the database migrations: Run the migrations to set up the database schema:
+5. Load Fixtures (Optional):
    ```bash 
    php bin/console doctrine:fixtures:load
    ```
@@ -51,6 +88,6 @@ Follow these steps to set up and run the application locally:
     symfony server:start --port=8000
     ```
 
+7. Access the API: 
 
-7. Here is the image showing how to make the API request via http request to the local server
     ![Presentation image](https://s3.amazonaws.com/i.snag.gy/qKT9zX.jpg)

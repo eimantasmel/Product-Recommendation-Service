@@ -12,6 +12,7 @@
 /var/
 /vendor/
 /.vscode
+/mysql
 ###< symfony/framework-bundle ###
 
 
@@ -185,3 +186,13 @@ fabric.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/symfony,visualstudiocode,phpstorm+all
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
