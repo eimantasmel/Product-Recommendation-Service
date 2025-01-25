@@ -5,9 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Interface\WeatherInterface;
 use App\Interface\ProductRecommendationInterface;
-
 final class ProductRecommendationController extends AbstractController
 {
     private ProductRecommendationInterface $productRecommendationService;
