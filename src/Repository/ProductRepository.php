@@ -16,16 +16,6 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // public function findByWeatherCondition(string $condition, int $limit): array
-    // {
-    //     return $this->createQueryBuilder('p')
-    //         ->andWhere(':condition MEMBER OF p.weatherConditions')
-    //         ->setParameter('condition', $condition)
-    //         ->setMaxResults($limit)
-    //         ->getQuery()
-    //         ->getResult();
-    // }
-
     public function findByWeatherCondition(string $condition, int $limit): array
     {
         // Fetch all products

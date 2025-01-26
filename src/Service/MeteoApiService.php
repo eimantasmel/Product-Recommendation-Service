@@ -35,6 +35,7 @@ class MeteoApiService implements WeatherInterface
             // Build WeatherForecastDto for each day with the most frequent condition code
             $dailyForecasts = [];
             foreach ($groupedData as $date => $conditions) {
+                
                 $mostFrequentCondition = $this->findMostFrequentConditionCode($conditions);
 
                 $dailyForecasts[] = new WeatherForecastDto(
@@ -61,6 +62,11 @@ class MeteoApiService implements WeatherInterface
         $groupedData = [];
 
         foreach ($forecasts as $forecast) {
+
+            // It might be a problem with condition codes of the certain dates.
+            if(!$forecast[MeteoApiConstants::CONDITION_CODE])
+                continue;
+
             $date = (new \DateTime($forecast[MeteoApiConstants::FORECAST_TIME_UTC]))->format('Y-m-d');
 
             if (!isset($groupedData[$date])) {

@@ -2,6 +2,13 @@
 
 This service provides product recommendations based on the weather forecast for a given city in Lithuania. It integrates with the LHMT API to get the current weather forecast and suggests products based on the weather conditions for the next 3 days.
 
+## Accessing the Host
+
+You can reach the host using the following link:
+
+[http://13.60.26.162/api/products/recommended/kaunas](http://13.60.26.162/api/products/recommended/kaunas)
+
+
 ## Technologies Used
 - **PHP**: 7.x / 8.x
 - **Symfony**: Framework for building the application

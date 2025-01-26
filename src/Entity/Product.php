@@ -22,7 +22,7 @@ class Product
     #[ORM\Column(type: 'string', nullable: false, length: 10)]
     private string $sku;
 
-    #[ORM\Column(type: 'string', nullable: false, length: 30)]
+    #[ORM\Column(type: 'string', nullable: false, length: 255)]
     private string $name;
 
     #[ORM\Column(name: 'price', type: 'decimal', precision: 7, scale: 2)]
